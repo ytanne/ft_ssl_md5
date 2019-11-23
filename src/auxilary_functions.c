@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_md5.c                                           :+:      :+:    :+:   */
+/*   auxilary_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/21 22:49:00 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/11/23 14:36:36 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/11/23 15:20:00 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/11/23 15:45:46 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
-void		ft_md5(char **flagsAndObjects)
+unsigned int	auxilary_f(unsigned *xyz)
 {
-	ft_printf("%s\n", flagsAndObjects[0]);
+	return ((xyz[0] & xyz[1]) | (~xyz[0] & xyz[2]));
+}
+
+unsigned int	auxilary_g(unsigned *xyz)
+{
+	return ((xyz[0] & xyz[2]) | (xyz[1] & ~xyz[2]));
+}
+
+unsigned int	auxilary_h(unsigned *xyz)
+{
+	return ((xyz[0] ^ xyz[1] ^ xyz[2]));
+}
+
+unsigned int	auxilary_i(unsigned *xyz)
+{
+	return (xyz[1] ^ (xyz[0] | ~xyz[2]));
 }

@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 19:22:31 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/11/21 23:41:39 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/11/23 13:04:35 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@
 
 # define P_FLAG 1
 # define Q_FLAG 2
-# define R_FLAG 2
-# define S_FLAG 2
+# define R_FLAG 4
+# define S_FLAG 8
 
-
-static unsigned int FLAGS : 4;
+static unsigned int FLAGS;
 
 static char					*hashFunctions[10] =
 {
@@ -56,5 +55,6 @@ static t_hashFunctionPtr	*g_hash_table[] =
 
 void						printHashError(char *errorHash);
 void						printUsage(void);
+void						unknownOptionError(char *errorHash);
 
 #endif
