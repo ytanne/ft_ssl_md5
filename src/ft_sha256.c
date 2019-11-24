@@ -6,13 +6,13 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 22:52:02 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/11/21 22:58:43 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/11/23 16:06:50 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
-void		ft_sha256(char **flagsAndObjects)
+void		ft_sha256(char **flags_and_objects)
 {
-	flagsAndObjects[0] = "hi";
+	flags_and_objects[0] = "hi";
 }

@@ -6,68 +6,68 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 19:19:17 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/11/23 13:14:59 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/11/23 16:23:13 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
-static void	get_flags(char **inputString, int argumentsNumber)
+static void		get_flags(char **input_string, int arg_number)
 {
 	int		i;
 
 	i = -1;
-	while (++i < argumentsNumber)
+	while (++i < arg_number)
 	{
-		if (*inputString[i] == '-' && *(inputString[i] + 1))
+		if (*input_string[i] == '-' && *(input_string[i] + 1))
 		{
-			if (*(inputString[i] + 1) == 'p')
-				FLAGS |= P_FLAG;
-			else if (*(inputString[i] + 1) == 'q')
-				FLAGS |= Q_FLAG;
-			else if (*(inputString[i] + 1) == 'r')
-				FLAGS |= R_FLAG;
-			else if (*(inputString[i] + 1) == 's')
-				FLAGS |= S_FLAG;
+			if (*(input_string[i] + 1) == 'p')
+				g_flags |= P_FLAG;
+			else if (*(input_string[i] + 1) == 'q')
+				g_flags |= Q_FLAG;
+			else if (*(input_string[i] + 1) == 'r')
+				g_flags |= R_FLAG;
+			else if (*(input_string[i] + 1) == 's')
+				g_flags |= S_FLAG;
 			else
-				unknownOptionError(inputString[i]);
+				unknown_option_error(input_string[i]);
 		}
 	}
-	ft_printf("The flags are: %u\n", (unsigned char)FLAGS);
+	ft_printf("The flags are: %u\n", (unsigned char)g_flags);
 }
 
-static void detectHashingFunction(char **inputString, int argumentsNumber)
+static void		detect_hashing_function(char **input_str)
 {
 	int				i;
 
 	i = 0;
-	while (i <= 4 && ft_strcmp(hashFunctions[i], inputString[0]) != 0)
+	while (i <= 4 && ft_strcmp(g_hash_functions[i], input_str[0]) != 0)
 		i++;
 	if (i == 5)
-		printHashError(inputString[0]);
-	HASH_IND = i;
+		print_hash_error(input_str[0]);
+	g_hash_ind = i;
 }
 
-static void readFromStdInp(void)
+static void		read_from_std_inp(void)
 {
 	ft_printf("On the maintanence\n");
 }
 
-static void	processInput(char **arguments, int argumentsNumber)
+static void		process_input(char **arguments, int arg_number)
 {
-	detectHashingFunction(arguments + 1, argumentsNumber - 1);
-	if (argumentsNumber == 2)
-		readFromStdInp();
+	detect_hashing_function(arguments + 1);
+	if (arg_number == 2)
+		read_from_std_inp();
 	else
-		get_flags(inputString + 1, argumentsNumber - 1);
-	g_applyHashFunction[HASH_IND](inputString);
+		get_flags(arguments + 1, arg_number - 1);
+	g_apply_hash_f[g_hash_ind](arguments);
 }
 
-int		main(int argumentsNumber, char **arguments)
+int				main(int arg_number, char **arguments)
 {
-	if (argumentsNumber == 1)
-		printUsage();
+	if (arg_number == 1)
+		print_usage();
 	else
-		processInput(arguments, argumentsNumber);
+		process_input(arguments, arg_number);
 	return (0);
 }

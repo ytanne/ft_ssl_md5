@@ -6,13 +6,13 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 22:53:34 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/11/21 22:59:00 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/11/23 16:05:51 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
-void		ft_whirlpool(char **flagsAndObjects)
+void		ft_whirlpool(char **flags_and_objects)
 {
-	flagsAndObjects[0] = "hi";
+	flags_and_objects[0] = "hi";
 }

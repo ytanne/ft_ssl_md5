@@ -6,21 +6,25 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 22:41:52 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/11/22 23:20:52 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/11/23 16:20:28 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
-void	printUsage(void)
+void	print_usage(void)
 {
-	ft_printf("This is not correct way to use the function, you coward bastard!\n");
+	ft_printf("This is not correct way to use the function!\n");
+	exit(0);
 }
 
-void	printHashError(char *errorHash)
+void	print_hash_error(char *error_hash)
 {
-	if (errorHash)
-		ft_printf("ft_ssl:Error: '%s' is an invalid command.\n", errorHash);
+	if (error_hash)
+	{
+		ft_printf("ft_ssl:Error: '%s' is an invalid command.\n", error_hash);
+		exit(0);
+	}
 	else
 		return ;
 }
@@ -30,8 +34,8 @@ void	printHashError(char *errorHash)
 **	below
 */
 
-void	unknownOptionError(char *errorHash)
+void	unknown_option_error(char *error_hash)
 {
-	ft_printf("unknow option '%s'\n", errorHash);
+	ft_printf("unknow option '%s'\n", error_hash);
 	exit(0);
 }
