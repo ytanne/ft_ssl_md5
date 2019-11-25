@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_md5.c                                           :+:      :+:    :+:   */
+/*   extra_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/21 22:49:00 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/11/24 22:59:07 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/11/23 22:16:03 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/11/24 23:02:25 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ssl.h"
-
-void			ft_md5(char **flags_and_objects)
+long long int		ft_pow(int base, int power)
 {
-	ft_printf("%s\n", flags_and_objects[2]);
+	long long int		result;
+
+	result = 1;
+	while (power-- > 0)
+		result *= base;
+	return (result);
+}
+
+unsigned int		ft_abs(int number)
+{
+	return (number >= 0) ? number : -1 * number;
 }
