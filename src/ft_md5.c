@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 22:49:00 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/11/24 22:59:07 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/11/24 23:21:05 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void			ft_md5(char **flags_and_objects)
 {
-	ft_printf("%s\n", flags_and_objects[2]);
+	ft_print_bits(flags_and_objects);
 }
