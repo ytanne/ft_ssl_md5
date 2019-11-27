@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/24 23:10:54 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/11/24 23:10:55 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/11/26 19:36:18 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@
 # define Q_FLAG 2
 # define R_FLAG 4
 # define S_FLAG 8
+# define ROTATE_LEFT(x, n)	(((x) << (n)) | ((x) >> (32 - n)))
 
 typedef unsigned long int	t_uint4;
 typedef unsigned int		t_uint;
+typedef unsigned char		t_chart;
 
 static t_uint				g_shift[64] =
 {
@@ -37,6 +39,11 @@ static t_uint				g_shift[64] =
 	5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20,
 	4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23,
 	6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21
+};
+
+static t_chart				g_digest[16] =
+{
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
 
 static t_uint4				g_sine_t[64] =
@@ -59,10 +66,18 @@ static t_uint4				g_sine_t[64] =
 	0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391
 };
 
-static t_uint4				g_a0;
-static t_uint4				g_b0;
-static t_uint4				g_c0;
-static t_uint4				g_d0;
+static t_chart				g_chunk[64] =
+{
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+};
+
+static t_uint4				g_a0 = 0x67452301;
+static t_uint4				g_b0 = 0xefcdab89;
+static t_uint4				g_c0 = 0x98badcfe;
+static t_uint4				g_d0 = 0x10325476;
 
 static t_uint				g_flags;
 static t_uint				g_hash_ind;
@@ -99,9 +114,9 @@ void						unknown_option_error(char *error_hash);
 **	Auxilary functions F, G, H, I
 */
 
-t_uint						auxilary_f(t_uint *xyz);
-t_uint						auxilary_g(t_uint *xyz);
-t_uint						auxilary_h(t_uint *xyz);
-t_uint						auxilary_i(t_uint *xyz);
+t_uint4						auxilary_f(t_uint4 xyz[3]);
+t_uint4						auxilary_g(t_uint4 xyz[3]);
+t_uint4						auxilary_h(t_uint4 xyz[3]);
+t_uint4						auxilary_i(t_uint4 xyz[3]);
 
 #endif
