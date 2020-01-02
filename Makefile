@@ -6,7 +6,7 @@
 #    By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/21 19:50:15 by yorazaye          #+#    #+#              #
-#    Updated: 2019/12/28 22:43:13 by yorazaye         ###   ########.fr        #
+#    Updated: 2019/12/31 16:46:23 by yorazaye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = ft_ssl
 SOURCE = src
 INC = includes
 LIB_INC = libft/includes
-FT_C = main ft_md5 auxilary_functions
+FT_C = main ft_md5 auxilary_functions prints_handling
 FT_P = $(patsubst %, $(SOURCE)/%, $(addsuffix .c, $(FT_C)))
 FT_O = $(addsuffix .o, $(FT_C))
 FLAGS = -Wall -Wextra -Werror
