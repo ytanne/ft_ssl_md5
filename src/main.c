@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 23:59:12 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/12/31 23:40:29 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/02 15:03:40 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void		detect_command(char *command, t_ssl *ssl)
 		ft_printf("ft_ssl: Error: '%s' is an invalid command.\n", command);
 		ft_printf("\nStandard commands:\n\nMessage Digest commands:");
 		ft_printf("\nmd5\nsha256\n\nCipher commands:");
+		exit(1);
 	}
 }
 
@@ -44,7 +45,8 @@ void		input_processing(char **input, int input_number)
 		print_from_stdin();
 	else
 	{
-		ft_printf("Hello there");
+		capture_the_flag(input + 1, --input_number);
+		ft_printf("Hello");
 	}
 }
 
