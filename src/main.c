@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 23:59:12 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/02 15:03:40 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/03 13:35:28 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char		*g_ssl_commands[2] =\
 	"md5",
 	"sha256"
 };
+
+
 
 void		detect_command(char *command, t_ssl *ssl)
 {
@@ -37,16 +39,18 @@ void		detect_command(char *command, t_ssl *ssl)
 
 void		input_processing(char **input, int input_number)
 {
-	t_ssl	*ssl;
+	t_ssl		*ssl;
+	t_ssl_flags	*ssl_flags;
 
 	ssl = (t_ssl *)malloc(sizeof(t_ssl));
+	init_flags(&ssl_flags);
 	detect_command(input[0], ssl);
 	if (input_number == 1)
-		print_from_stdin();
+		print_from_stdin(ssl);
 	else
 	{
-		capture_the_flag(input + 1, --input_number);
-		ft_printf("Hello");
+		get_flags(input + 1, --input_number, ssl_flags);
+		ft_printf("Hello\n");
 	}
 }
 

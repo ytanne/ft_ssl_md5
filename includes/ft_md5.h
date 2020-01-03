@@ -6,15 +6,15 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 23:59:05 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/02 13:47:04 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/02 16:44:50 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_MD5_H
 # define FT_MD5_H
-# include "libft.h"
+# include "ft_ssl.h"
 
-int							g_s[64] =\
+static int					g_s[64] =\
 {\
 	7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,\
 	5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20,\
@@ -22,7 +22,7 @@ int							g_s[64] =\
 	6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21\
 };
 
-uint32_t					g_k[64] =\
+static uint32_t				g_k[64] =\
 {\
 	0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,\
 	0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501,\
@@ -42,7 +42,7 @@ uint32_t					g_k[64] =\
 	0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391\
 };
 
-uint32_t					g_abcd[4] =\
+static uint32_t				g_abcd[4] =\
 {\
 	0x67452301,\
 	0xefcdab89,\
@@ -50,7 +50,7 @@ uint32_t					g_abcd[4] =\
 	0x10325476\
 };
 
-uint8_t						g_message[64] =\
+static uint8_t				g_message[64] =\
 {\
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\
@@ -69,10 +69,6 @@ typedef struct				s_md5
 	int						g;
 }							t_md5;
 
-typedef unsigned long int	t_uint4;
-void						ft_md5(char *string);
-void						usage_print(void);
-void						print_from_stdin(void);
 uint32_t					f_function(uint32_t x, uint32_t y, uint32_t z);
 uint32_t					g_function(uint32_t x, uint32_t y, uint32_t z);
 uint32_t					h_function(uint32_t x, uint32_t y, uint32_t z);
