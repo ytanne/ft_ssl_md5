@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 23:10:42 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/03 13:35:52 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/03 13:47:45 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct			s_ssl_inputs
 	int					s;
 	struct s_ssl_inputs	*next;
 }						t_ssl_inputs;
-
 
 typedef void			t_ssl_function(char *string);
 void					ft_md5(char *string);

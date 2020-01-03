@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 16:30:55 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/02 17:06:31 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/03 13:45:25 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 t_ssl_inputs			*new_ssl(char *string, int s)
 {
-    t_ssl_inputs		*new_data;
+	t_ssl_inputs		*new_data;
 
 	new_data = (t_ssl_inputs *)malloc(sizeof(t_ssl_inputs));
-    new_data->string = ft_strdup(string);
-    new_data->s = s;
+	new_data->string = ft_strdup(string);
+	new_data->s = s;
 	new_data->next = NULL;
 	return (new_data);
 }

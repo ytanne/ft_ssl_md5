@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 13:27:01 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/03 13:36:17 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/03 13:44:48 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 static int		flag_assignment(char flag, t_ssl_flags *ssl)
 {
-    if (flag == 'p')
-        ssl->p++;
-    else if (flag == 'q')
-        ssl->q = 1;
-    else if (flag == 'r')
-        ssl->r = 1;
-    else if (flag == 's')
-    {
-        ssl->s = 1;
-        ft_printf("Bob, do something\n");
-        return (0);
-    }
-    else
-        illegal_option_error(flag);
-    return (1);
+	if (flag == 'p')
+		ssl->p++;
+	else if (flag == 'q')
+		ssl->q = 1;
+	else if (flag == 'r')
+		ssl->r = 1;
+	else if (flag == 's')
+	{
+		ssl->s = 1;
+		ft_printf("Bob, do something\n");
+		return (0);
+	}
+	else
+		illegal_option_error(flag);
+	return (1);
 }
 
-void		get_flags(char **input, int limit, t_ssl_flags *ssl)
+void			get_flags(char **input, int limit, t_ssl_flags *ssl)
 {
 	int		i;
 
@@ -42,14 +42,14 @@ void		get_flags(char **input, int limit, t_ssl_flags *ssl)
 		{
 			while (*(++input[i]))
 				if (flag_assignment(*(input[i]), ssl) == 0)
-					break;
+					break ;
 		}
 		else
 			return ;
 	}
 }
 
-void		init_flags(t_ssl_flags **ssl)
+void			init_flags(t_ssl_flags **ssl)
 {
 	*ssl = (t_ssl_flags *)malloc(sizeof(t_ssl_flags));
 	(*ssl)->p = 0;
