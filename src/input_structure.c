@@ -6,13 +6,13 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 16:30:55 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/03 13:45:25 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/04 10:02:51 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
-t_ssl_inputs			*new_ssl(char *string, int s)
+t_ssl_inputs			*new_input(char *string, int s)
 {
 	t_ssl_inputs		*new_data;
 
@@ -23,30 +23,30 @@ t_ssl_inputs			*new_ssl(char *string, int s)
 	return (new_data);
 }
 
-void					add_to_end(t_ssl_inputs *old, t_ssl_inputs *new)
+void					add_to_end(t_ssl_inputs **old, t_ssl_inputs *new)
 {
 	t_ssl_inputs		*tmp;
 
-	if (!old)
-		old = new;
+	if (!(*old))
+		*old = new;
 	else
 	{
-		tmp = old;
-		while (old->next)
-			old = old->next;
-		old->next = new;
+		tmp = *old;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
 	}
 }
 
-void					delete_ssl_input(t_ssl_inputs *ssl_input)
+void					delete_ssl_input(t_ssl_inputs **ssl_input)
 {
 	t_ssl_inputs		*tmp_input;
 
-	while (ssl_input)
+	while (*ssl_input)
 	{
-		tmp_input = ssl_input;
-		ssl_input = ssl_input->next;
-		ft_strdel(&(tmp_input->string));
-		free(&tmp_input);
+		tmp_input = (*ssl_input)->next;
+		ft_strdel(&((*ssl_input)->string));
+		ft_memdel((void **)ssl_input);
+		*ssl_input = tmp_input;
 	}
 }
