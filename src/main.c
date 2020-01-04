@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 23:59:12 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/03 13:46:55 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/03 14:56:27 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,13 @@ void		detect_command(char *command, t_ssl *ssl)
 
 	i = -1;
 	while (++i < 2)
-		if (ft_strcmp(command, g_ssl_commands[i]) == 0 && (ssl->command = i))
+		if (ft_strcmp(command, g_ssl_commands[i]) == 0)
+		{
+			ssl->command = i;
 			break ;
-	if (ssl->command == i)
-	{
-		ft_printf("ft_ssl: Error: '%s' is an invalid command.\n", command);
-		ft_printf("\nStandard commands:\n\nMessage Digest commands:");
-		ft_printf("\nmd5\nsha256\n\nCipher commands:");
-		exit(1);
-	}
+		}
+	if (i >= 2)
+		invalid_command_error(command);
 }
 
 void		input_processing(char **input, int input_number)

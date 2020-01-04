@@ -6,21 +6,20 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:40:09 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/03 13:45:57 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/03 17:26:48 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
-char		*ft_concat(char *line, char *extra, int size)
+void	ft_concat(char **result, char **tmp, char *line)
 {
-	char	*result;
-	int		i;
-
-	i = ft_strlen(line);
-	result = ft_strnew(size);
-	result = ft_strdup(line);
-	ft_strncpy(result + i, extra, 42);
-	result[size] = '\0';
-	return (result);
+	if (!(*tmp))
+		*result = ft_strdup(line);
+	else
+	{
+		*result = ft_strjoin(*tmp, line);
+		ft_strdel(tmp);
+	}
+	*tmp = *result;
 }

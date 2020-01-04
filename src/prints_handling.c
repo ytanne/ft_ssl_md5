@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 16:44:34 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/03 13:47:22 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/03 17:28:08 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ void		illegal_option_error(char option)
 	exit(1);
 }
 
+void		invalid_command_error(char *command)
+{
+	ft_printf("ft_ssl: Error: '%s' is an invalid command.\n", command);
+	ft_printf("\nStandard commands:\n\nMessage Digest commands:");
+	ft_printf("\nmd5\nsha256\n\nCipher commands:");
+	exit(1);
+}
+
 void		print_from_stdin(t_ssl *ssl)
 {
 	char	*line;
@@ -31,20 +39,18 @@ void		print_from_stdin(t_ssl *ssl)
 	char	*tmp;
 
 	tmp = NULL;
-	while (get_next_line(1, &line))
+	result = NULL;
+	line = ft_strnew(12);
+	while (read(1, line, 10))
 	{
-		if (!tmp)
-			result = ft_strdup(line);
-		else
-		{
-			result = ft_strjoin(tmp, "\n");
-			ft_strdel(&tmp);
-			tmp = result;
-			result = ft_strjoin(tmp, line);
-			ft_strdel(&tmp);
-		}
-		tmp = result;
-		ft_strdel(&line);
+		line[10] = '\0';
+		ft_concat(&result, &tmp, line);
+	}
+	ft_strdel(&line);
+	if (!result)
+	{
+		result = ft_strnew(1);
+		result[0] = '\0';
 	}
 	g_ssl_functions[ssl->command](result);
 	ft_strdel(&result);
