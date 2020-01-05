@@ -6,11 +6,12 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 16:44:34 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/03 17:28:08 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/05 12:48:20 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
+#include "ft_md5.h"
 
 void		usage_print(void)
 {
@@ -52,6 +53,14 @@ void		print_from_stdin(t_ssl *ssl)
 		result = ft_strnew(1);
 		result[0] = '\0';
 	}
-	g_ssl_functions[ssl->command](result);
+	g_ssl_functions[ssl->command](ssl, result);
 	ft_strdel(&result);
+}
+
+void		little_endian_print(uint32_t number)
+{
+	ft_printf("%02x", number & 0xFF);
+	ft_printf("%02x", (number >> 8) & 0xFF);
+	ft_printf("%02x", (number >> 16) & 0xFF);
+	ft_printf("%02x", (number >> 24) & 0xFF);
 }

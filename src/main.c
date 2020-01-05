@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 23:59:12 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/04 10:53:31 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/05 12:48:42 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void		process_flags_inputs(t_ssl *ssl)
 		if (fl == 0)
 		{
 			print_from_stdin(ssl);
-			fl = 1;		
+			fl = 1;
 		}
 		else
-			ft_printf("ft_md5('');");//ft_md5("");
+			ft_md5(ssl, "");
 		--ssl->p;
 	}
 }

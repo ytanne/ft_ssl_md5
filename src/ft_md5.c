@@ -6,29 +6,32 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 23:59:18 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/02 16:30:12 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/05 12:40:01 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_md5.h"
 
-static void		fill_chunk(char *string)
+static void		md5_init(t_md5 *md5_data, char *string)
 {
 	int		i;
 
+	g_abcd[0] = 0x67452301;
+	g_abcd[1] = 0xefcdab89;
+	g_abcd[2] = 0x98badcfe;
+	g_abcd[3] = 0x10325476;
+	md5_data->a = g_abcd[0];
+	md5_data->b = g_abcd[1];
+	md5_data->c = g_abcd[2];
+	md5_data->d = g_abcd[3];
+	i = -1;
+	while (++i < 64)
+		g_message[i] = 0;
 	i = -1;
 	while (++i < 56 && string[i])
 		g_message[i] = (uint8_t)string[i];
 	if (i < 56)
 		g_message[i] = 128;
-}
-
-static void		declare_abcd(t_md5 *md5_data)
-{
-	md5_data->a = g_abcd[0];
-	md5_data->b = g_abcd[1];
-	md5_data->c = g_abcd[2];
-	md5_data->d = g_abcd[3];
 }
 
 static void		append_length(uint64_t length)
@@ -61,14 +64,6 @@ static void		divide2words(uint32_t *words)
 	}
 }
 
-void			little_endian_print(uint32_t number)
-{
-	ft_printf("%02x", number & 0xFF);
-	ft_printf("%02x", (number >> 8) & 0xFF);
-	ft_printf("%02x", (number >> 16) & 0xFF);
-	ft_printf("%02x", (number >> 24) & 0xFF);
-}
-
 void			ft_process_words(t_md5 *md5_data, int i)
 {
 	if (i >= 0 && i <= 15)
@@ -98,14 +93,13 @@ void			ft_process_words(t_md5 *md5_data, int i)
 	md5_data->b += leftrotate(md5_data->f, g_s[i]);
 }
 
-void			ft_md5(char *string)
+void			ft_md5(t_ssl *ssl, char *string)
 {
 	t_md5			*md5_data;
 	int				i;
 
 	md5_data = (t_md5 *)malloc(sizeof(t_md5));
-	declare_abcd(md5_data);
-	fill_chunk(string);
+	md5_init(md5_data, string);
 	append_length((uint64_t)(ft_strlen(string) * 8));
 	divide2words((uint32_t *)md5_data->words);
 	i = -1;
@@ -115,8 +109,5 @@ void			ft_md5(char *string)
 	g_abcd[1] += md5_data->b;
 	g_abcd[2] += md5_data->c;
 	g_abcd[3] += md5_data->d;
-	ft_printf("MD5 (\"%s\") = ", string);
-	i = -1;
-	while (++i < 4)
-		little_endian_print(g_abcd[i]);
+	hash_to_stdout(ssl, string, g_abcd);
 }

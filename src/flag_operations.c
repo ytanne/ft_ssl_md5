@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 13:27:01 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/04 10:54:55 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/04 18:07:09 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void			init_ssl(t_ssl **ssl)
 	*ssl = (t_ssl *)malloc(sizeof(t_ssl));
 	(*ssl)->p = 0;
 	(*ssl)->q = 0;
+	(*ssl)->r = 0;
 	(*ssl)->s = 0;
 	(*ssl)->command = -1;
 }
