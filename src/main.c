@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 23:59:12 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/06 14:54:55 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/06 15:29:52 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void		input_processing(char **input, int input_number)
 		get_flags(input + 1, input_number - 1, ssl);
 		while (ssl->inputs)
 		{
-			ft_printf("%s and %d", ssl->inputs->string, ssl->inputs->s);
+			ft_printf("%s and %d\n", ssl->inputs->string, ssl->inputs->s);
 			ssl->inputs = ssl->inputs->next;
 		}
 		//process_flags_inputs(ssl, input);
