@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 13:27:01 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/06 15:12:12 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/06 15:25:54 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int			get_flags(char **input, int limit, t_ssl *ssl)
 {
 	int		i;
 	int		file_flag;
-
+	
 	i = 0;
 	file_flag = 0;
 	while (i < limit)
