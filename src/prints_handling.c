@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 16:44:34 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/05 12:48:20 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/06 11:06:42 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ void		invalid_command_error(char *command)
 	ft_printf("ft_ssl: Error: '%s' is an invalid command.\n", command);
 	ft_printf("\nStandard commands:\n\nMessage Digest commands:");
 	ft_printf("\nmd5\nsha256\n\nCipher commands:");
+	exit(1);
+}
+
+void		argument_error(void)
+{
+	ft_printf("md5: option requires an argument -- s\n");
+	ft_printf("usage: ft_ssl command [-pqr] [-s string] [files ...]\n");
 	exit(1);
 }
 

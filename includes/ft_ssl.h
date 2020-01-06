@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 23:10:42 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/05 12:42:08 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/06 13:55:05 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,16 @@ typedef void			t_ssl_function(t_ssl *ssl, char *string);
 void					ft_md5(t_ssl *ssl, char *string);
 void					illegal_option_error(char option);
 void					invalid_command_error(char *command);
+void					argument_error(void);
 void					usage_print(void);
 void					print_from_stdin(t_ssl *ssl);
 void					little_endian_print(uint32_t number);
 void					hash_to_stdout(t_ssl *ssl, char *str, uint32_t *abcd);
 t_ssl_inputs			*new_input(char *string, int s);
+void					delete_ssl_input(t_ssl_inputs **ssl_input);
 void					add_to_end(t_ssl_inputs **old, t_ssl_inputs *new);
 void					ft_concat(char **dest, char **temp, char *src);
-void					get_flags(char **inp, int len, t_ssl *ssl);
+int						get_flags(char **inp, int len, t_ssl *ssl);
 void					init_ssl(t_ssl **ssl);
 
 static t_ssl_function	*g_ssl_functions[] =

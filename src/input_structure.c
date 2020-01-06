@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 16:30:55 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/04 10:02:51 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/06 14:16:50 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,15 @@ void					add_to_end(t_ssl_inputs **old, t_ssl_inputs *new)
 {
 	t_ssl_inputs		*tmp;
 
-	if (!(*old))
+	if (*old == NULL)
 		*old = new;
 	else
 	{
 		tmp = *old;
-		while (tmp->next)
+		while (tmp && tmp->next)
 			tmp = tmp->next;
-		tmp->next = new;
+		if (tmp)
+			tmp->next = new;
 	}
 }
 
