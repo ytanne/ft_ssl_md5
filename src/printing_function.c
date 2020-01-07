@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 17:33:32 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/06 21:29:18 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/07 12:24:37 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int			ssl_s_flag_print(t_ssl *ssl, char *string, uint32_t *abcd)
 	if (ssl->s == 1)
 		ft_printf("MD5 (\"%s\") = ", string);
 	else
-		ft_printf("MD5 (%s) = ", string);
+		ft_printf("MD5 (%s) = ", ssl->inputs->string);
 	while (i < 4)
 		little_endian_print(abcd[i++]);
 	ft_putchar('\n');

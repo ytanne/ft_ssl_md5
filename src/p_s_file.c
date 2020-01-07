@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 20:58:17 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/07 09:22:00 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/07 12:22:53 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,16 @@ void		s_flag(t_ssl *ssl)
 
 void		file_handling(t_ssl *ssl)
 {
-	ssl->s = 0;
-	/*
-	char	*document;
+	int		fd;
+	char	*document_data;
 
+	ssl->s = 0;
 	while (ssl->inputs && ssl->inputs->s == 0)
 	{
-		g_ssl_functions[ssl->command](ssl, ssl->inputs->string);
+		fd = open(ssl->inputs->string, O_RDONLY);
+		document_data = get_content_from_fd(fd);
+		g_ssl_functions[ssl->command](ssl, document_data);
 		ssl->inputs = ssl->inputs->next;
+		ft_strdel(&document_data);
 	}
-	*/
-	ft_printf("Reading a file\n");
 }
