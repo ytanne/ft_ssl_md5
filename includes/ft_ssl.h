@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 23:10:42 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/06 21:08:58 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/07 09:20:17 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ typedef struct			s_ssl
 
 typedef void			t_ssl_function(t_ssl *ssl, char *string);
 void					ft_md5(t_ssl *ssl, char *string);
-void					illegal_option_error(char option);
-void					invalid_command_error(char *command);
-void					argument_error(void);
+void					invalid_command_error(char *option);
+void					handling_error(char *error, char option);
 void					usage_print(void);
 void					print_from_stdin(t_ssl *ssl);
+char				 	*get_content_from_fd(int fd);
 void					little_endian_print(uint32_t number);
 void					hash_to_stdout(t_ssl *ssl, char *str, uint32_t *abcd);
 t_ssl_inputs			*new_input(char *string, int s);
@@ -56,6 +56,7 @@ int						get_flags(char **inp, int len, t_ssl *ssl);
 void					init_ssl(t_ssl **ssl);
 void					p_flag(t_ssl *ssl);
 void					s_flag(t_ssl *ssl);
+void					file_handling(t_ssl *ssl);
 
 static t_ssl_function	*g_ssl_functions[] =
 {

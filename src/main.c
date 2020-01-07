@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 23:59:12 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/06 21:11:32 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/07 09:26:37 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void		process_inputs(t_ssl *ssl)
 		p_flag(ssl);
 	if (ssl->s == 1)
 		s_flag(ssl);
+	if (ssl->inputs != NULL)
+		file_handling(ssl);
 }
 
 void		detect_command(char *command, t_ssl *ssl)
@@ -35,17 +37,17 @@ void		detect_command(char *command, t_ssl *ssl)
 		invalid_command_error(command);
 }
 
-void		input_processing(char **input, int input_number)
+void		input_processing(char **input, int arg_number)
 {
 	t_ssl		*ssl;
 
 	init_ssl(&ssl);
 	detect_command(input[0], ssl);
-	if (input_number == 1)
+	if (arg_number == 1)
 		print_from_stdin(ssl);
 	else
 	{
-		get_flags(input + 1, input_number - 1, ssl);
+		get_flags(input + 1, arg_number - 1, ssl);
 		process_inputs(ssl);
 	}
 	delete_ssl_input(&(ssl->inputs));

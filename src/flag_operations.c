@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 13:27:01 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/06 21:14:23 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/07 09:14:23 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int		flag_assignment(char *flag, t_ssl *ssl)
 			return (0);
 	}
 	else
-		illegal_option_error(*flag);
+		handling_error("illegal_option_error", *flag);
 	return (1);
 }
 
@@ -49,10 +49,9 @@ int			process_flag(char **input, int limit, t_ssl *ssl, int i)
 			if (i + 1 < limit)
 				add_to_end(&(ssl->inputs), new_input(input[++i], 1));
 			else
-				argument_error();
+				handling_error("argument_error", 'q');
 			break ;
 		}
-		//input[i] += c;
 	}
 	return (i);
 }

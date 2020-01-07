@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pqrs_flags.c                                       :+:      :+:    :+:   */
+/*   p_s_file.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 20:58:17 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/06 21:13:52 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/07 09:22:00 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,19 @@ void		s_flag(t_ssl *ssl)
 		g_ssl_functions[ssl->command](ssl, ssl->inputs->string);
 		ssl->inputs = ssl->inputs->next;
 	}
+}
+
+void		file_handling(t_ssl *ssl)
+{
+	ssl->s = 0;
+	/*
+	char	*document;
+
+	while (ssl->inputs && ssl->inputs->s == 0)
+	{
+		g_ssl_functions[ssl->command](ssl, ssl->inputs->string);
+		ssl->inputs = ssl->inputs->next;
+	}
+	*/
+	ft_printf("Reading a file\n");
 }
