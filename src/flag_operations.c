@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 13:27:01 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/06 15:29:30 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/06 21:14:23 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int			process_flag(char **input, int limit, t_ssl *ssl, int i)
 				argument_error();
 			break ;
 		}
-		input[i] += c;
+		//input[i] += c;
 	}
 	return (i);
 }
@@ -64,10 +64,8 @@ int			get_flags(char **input, int limit, t_ssl *ssl)
 	
 	i = 0;
 	file_flag = 0;
-	ft_printf("Limit is %d\n", limit);
 	while (i < limit)
 	{
-		ft_printf("i is %d\n", i);
 		if (input[i][0] == '-' && file_flag == 0)
 			i = process_flag(input, limit, ssl, i);
 		else

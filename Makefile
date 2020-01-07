@@ -6,7 +6,7 @@
 #    By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/21 19:50:15 by yorazaye          #+#    #+#              #
-#    Updated: 2020/01/04 18:01:59 by yorazaye         ###   ########.fr        #
+#    Updated: 2020/01/06 21:00:21 by yorazaye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SOURCE = src
 INC = includes
 LIB_INC = libft/includes
 FT_C = main ft_md5 auxilary_functions prints_handling input_structure\
-	extra_functions flag_operations printing_function
+	extra_functions flag_operations printing_function pqrs_flags
 FT_P = $(patsubst %, $(SOURCE)/%, $(addsuffix .c, $(FT_C)))
 FT_O = $(addsuffix .o, $(FT_C))
 FLAGS = -Wall -Wextra -Werror

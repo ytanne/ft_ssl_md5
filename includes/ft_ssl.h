@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 23:10:42 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/06 13:55:05 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/06 21:08:58 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void					add_to_end(t_ssl_inputs **old, t_ssl_inputs *new);
 void					ft_concat(char **dest, char **temp, char *src);
 int						get_flags(char **inp, int len, t_ssl *ssl);
 void					init_ssl(t_ssl **ssl);
+void					p_flag(t_ssl *ssl);
+void					s_flag(t_ssl *ssl);
 
 static t_ssl_function	*g_ssl_functions[] =
 {

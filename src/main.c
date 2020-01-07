@@ -6,29 +6,18 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 23:59:12 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/06 15:29:52 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/06 21:11:32 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
-void		process_flags_inputs(t_ssl *ssl, char **inputs)
+void		process_inputs(t_ssl *ssl)
 {
-	int		fl;
-
-	fl = 0;
-	*inputs = 0;
-	while (ssl->p >= 1)
-	{
-		if (fl == 0)
-		{
-			print_from_stdin(ssl);
-			fl = 1;
-		}
-		else
-			ft_md5(ssl, "");
-		--ssl->p;
-	}
+	if (ssl->p >= 1)
+		p_flag(ssl);
+	if (ssl->s == 1)
+		s_flag(ssl);
 }
 
 void		detect_command(char *command, t_ssl *ssl)
@@ -57,12 +46,7 @@ void		input_processing(char **input, int input_number)
 	else
 	{
 		get_flags(input + 1, input_number - 1, ssl);
-		while (ssl->inputs)
-		{
-			ft_printf("%s and %d\n", ssl->inputs->string, ssl->inputs->s);
-			ssl->inputs = ssl->inputs->next;
-		}
-		//process_flags_inputs(ssl, input);
+		process_inputs(ssl);
 	}
 	delete_ssl_input(&(ssl->inputs));
 	ft_memdel((void **)&ssl);
