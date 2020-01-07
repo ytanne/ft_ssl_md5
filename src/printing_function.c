@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 17:33:32 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/05 12:53:13 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/06 21:29:18 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int			ssl_r_flag_print(char *string, uint32_t *abcd)
 	i = 0;
 	while (i < 4)
 		little_endian_print(abcd[i++]);
-	ft_printf(" %s\n", string);
+	ft_printf(" \"%s\"\n", string);
 	return (1);
 }
 
