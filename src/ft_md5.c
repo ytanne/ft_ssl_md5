@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 23:59:18 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/05 12:40:01 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/07 16:21:32 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@ static void		md5_init(t_md5 *md5_data, char *string)
 {
 	int		i;
 
-	g_abcd[0] = 0x67452301;
-	g_abcd[1] = 0xefcdab89;
-	g_abcd[2] = 0x98badcfe;
-	g_abcd[3] = 0x10325476;
 	md5_data->a = g_abcd[0];
 	md5_data->b = g_abcd[1];
 	md5_data->c = g_abcd[2];
@@ -96,9 +92,11 @@ void			ft_process_words(t_md5 *md5_data, int i)
 void			ft_md5(t_ssl *ssl, char *string)
 {
 	t_md5			*md5_data;
+	int				length;
 	int				i;
 
 	md5_data = (t_md5 *)malloc(sizeof(t_md5));
+	g_abcd_init(g_abcd);
 	md5_init(md5_data, string);
 	append_length((uint64_t)(ft_strlen(string) * 8));
 	divide2words((uint32_t *)md5_data->words);

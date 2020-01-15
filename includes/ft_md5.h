@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 23:59:05 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/04 16:54:39 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/07 16:18:50 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ uint32_t					g_function(uint32_t x, uint32_t y, uint32_t z);
 uint32_t					h_function(uint32_t x, uint32_t y, uint32_t z);
 uint32_t					i_function(uint32_t x, uint32_t y, uint32_t z);
 uint32_t					leftrotate(uint32_t n, int c);
+void						g_abcd_init(uint32_t *abcd);
 
 #endif

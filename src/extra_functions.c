@@ -6,7 +6,7 @@
 /*   By: yorazaye <yorazaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:40:09 by yorazaye          #+#    #+#             */
-/*   Updated: 2020/01/07 09:19:58 by yorazaye         ###   ########.fr       */
+/*   Updated: 2020/01/07 16:19:38 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,3 +46,18 @@ char 	*get_content_from_fd(int fd)
 	}
 	return (result);
 }
+
+void	g_abcd_init(uint32_t *abcd)
+{
+	(abcd)[0] = 0x67452301;
+	(abcd)[1] = 0xefcdab89;
+	(abcd)[2] = 0x98badcfe;
+	(abcd)[3] = 0x10325476;
+}
+
+/*
+void	md5_512_division(char *string)
+{
+	 
+}
+*/
